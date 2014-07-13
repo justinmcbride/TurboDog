@@ -6,6 +6,10 @@ import com.badlogic.gdx.Screen;
  * Created by Justin on 7/12/2014.
  */
 public class MainMenuScreen implements Screen {
+    public MainMenuScreen(Object data) {
+
+    }
+
     @Override
     public void render(float delta) {
         // something should probably happen here

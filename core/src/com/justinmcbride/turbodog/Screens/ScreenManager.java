@@ -26,10 +26,10 @@ public final class ScreenManager {
         this.game = game;
     }
  
-    public void show(Screen screen) {
+    public void show(Screen screen, Object data) {
         if (null == game) return;
         if (!screens.containsKey(screen.ordinal())) {
-            screens.put(screen.ordinal(), screen.getScreenInstance());
+            screens.put(screen.ordinal(), screen.getScreenInstance(data));
         }
         game.setScreen(screens.get(screen.ordinal()));
     }

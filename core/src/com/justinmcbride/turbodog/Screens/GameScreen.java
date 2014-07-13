@@ -6,6 +6,10 @@ import com.badlogic.gdx.Screen;
  * Created by Justin on 7/12/2014.
  */
 public class GameScreen implements Screen {
+    public GameScreen(Object data) {
+
+    }
+
     @Override
     public void render(float delta) {
 

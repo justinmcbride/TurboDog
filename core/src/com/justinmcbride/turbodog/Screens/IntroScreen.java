@@ -6,6 +6,10 @@ import com.badlogic.gdx.*;
  * Created by justin on 7/12/14.
  */
 public class IntroScreen implements com.badlogic.gdx.Screen {
+    public IntroScreen(Object data) {
+
+    }
+
     @Override
     public void render(float delta) {
 
