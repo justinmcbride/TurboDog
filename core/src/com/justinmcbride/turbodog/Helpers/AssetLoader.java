@@ -26,7 +26,7 @@ public class AssetLoader {
 
     public static void initialLoad() {
         // Load the fonts
-        fontRegular = new BitmapFont(Gdx.files.internal("reg/ubuntuReg32.fnt"));
+        fontRegular = new BitmapFont(Gdx.files.internal("reg/ubuntuReg-64.fnt"));
         fontShadow = new BitmapFont(Gdx.files.internal("shadow/ubuntuShadow32.fnt"));
     }
 }
