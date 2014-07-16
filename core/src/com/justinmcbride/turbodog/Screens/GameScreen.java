@@ -14,7 +14,7 @@ public class GameScreen implements Screen {
     private GameWorld world;
     private GameRenderer renderer;
 
-    public GameScreen(Object data) {
+    public GameScreen() {
         System.out.println("GameScreen Initialized");
 
         world = new GameWorld();

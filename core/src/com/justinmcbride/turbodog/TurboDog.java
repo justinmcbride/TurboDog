@@ -12,11 +12,12 @@ public class TurboDog extends Game {
 		System.out.println("Creating the game...");
         AssetLoader.initialLoad();
         ScreenManager.getInstance().initialize(this);
-        ScreenManager.getInstance().show(Screen.MAIN_MENU, null);
+        ScreenManager.getInstance().show(Screen.INTRO);
 	}
 
     @Override
     public void dispose() {
         super.dispose();
+        ScreenManager.getInstance().dispose();
     }
 }

@@ -7,7 +7,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Timer;
 import com.justinmcbride.turbodog.Helpers.AssetLoader;
-import com.justinmcbride.turbodog.Helpers.ScreenTimer;
+import com.justinmcbride.turbodog.Helpers.ScreenSwitchTask;
 
 /**
  * Created by justin on 7/12/14.
@@ -18,15 +18,13 @@ public class IntroScreen implements com.badlogic.gdx.Screen {
     private float gameWidth, gameHeight;
     private BitmapFont fontReg, fontShadow;
 
-    public IntroScreen(Object data) {
+    public IntroScreen() {
         float screenWidth = Gdx.graphics.getWidth();
         float screenHeight = Gdx.graphics.getHeight();
         gameWidth = 136;
         gameHeight = screenHeight / (screenWidth / gameWidth);
 
         spriteBatch = new SpriteBatch();
-        camera = new OrthographicCamera();
-        camera.setToOrtho(true, 137, 204);
 
         fontReg = AssetLoader.getFontRegular();
         fontShadow = AssetLoader.getFontShadow();
@@ -37,23 +35,24 @@ public class IntroScreen implements com.badlogic.gdx.Screen {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         spriteBatch.begin();
-        fontReg.draw(spriteBatch, "intro screen", 100, 100);
+        fontReg.draw(spriteBatch, "intro screen", 20, 20);
         spriteBatch.end();
     }
 
     @Override
     public void resize(int width, int height) {
-
+        spriteBatch.getProjectionMatrix().setToOrtho2D(-width/2, -height/2, width, height);
     }
 
     @Override
     public void show() {
-        Timer.schedule(new ScreenTimer(Screen.MAIN_MENU), 2.0f);
+        Timer.schedule(new ScreenSwitchTask(Screen.MAIN_MENU), 2.0f);
     }
 
     @Override
     public void hide() {
         ScreenManager.getInstance().dispose(Screen.INTRO);
+        System.out.println("hiding intro");
     }
 
     @Override
