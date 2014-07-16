@@ -5,7 +5,9 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.Timer;
 import com.justinmcbride.turbodog.Helpers.AssetLoader;
+import com.justinmcbride.turbodog.Helpers.ScreenTimer;
 
 /**
  * Created by justin on 7/12/14.
@@ -35,7 +37,7 @@ public class IntroScreen implements com.badlogic.gdx.Screen {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         spriteBatch.begin();
-        fontReg.draw(spriteBatch, "Hello", 100, 100);
+        fontReg.draw(spriteBatch, "intro screen", gameHeight / 2, gameWidth / 2);
         spriteBatch.end();
     }
 
@@ -46,12 +48,12 @@ public class IntroScreen implements com.badlogic.gdx.Screen {
 
     @Override
     public void show() {
-
+        Timer.schedule(new ScreenTimer(Screen.MAIN_MENU), 2.0f);
     }
 
     @Override
     public void hide() {
-
+        ScreenManager.getInstance().dispose(Screen.INTRO);
     }
 
     @Override
@@ -66,6 +68,8 @@ public class IntroScreen implements com.badlogic.gdx.Screen {
 
     @Override
     public void dispose() {
-
+        spriteBatch.dispose();
+        fontReg.dispose();
+        fontShadow.dispose();
     }
 }
