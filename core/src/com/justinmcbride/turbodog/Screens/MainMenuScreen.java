@@ -35,7 +35,7 @@ public class MainMenuScreen implements com.badlogic.gdx.Screen {
         camera = new OrthographicCamera();
         camera.setToOrtho(true, 137, 204);
 
-        playButton = new Button("Play", fontShadow, new ScreenSwitchHandler(Screen.INTRO, null));
+        playButton = new Button("Play", fontShadow, new ScreenSwitchHandler(Screen.GAME, null));
 
 
     }
