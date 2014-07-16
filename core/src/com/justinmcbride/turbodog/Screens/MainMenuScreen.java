@@ -18,21 +18,26 @@ public class MainMenuScreen implements com.badlogic.gdx.Screen {
     private float gameWidth, gameHeight;
     private BitmapFont fontReg, fontShadow;
     private Button playButton = null;
+    int lineHeight = 0;
 
     public MainMenuScreen(Object data) {
         float screenWidth = Gdx.graphics.getWidth();
         float screenHeight = Gdx.graphics.getHeight();
         gameWidth = 136;
         gameHeight = screenHeight / (screenWidth / gameWidth);
+        fontReg = AssetLoader.getFontRegular();
+        fontShadow = AssetLoader.getFontShadow();
 
-        playButton = new Button("Play", fontShadow, new ScreenSwitchHandler(Screen.INTRO, null));
+
+        lineHeight = Math.round(2.5f * fontReg.getCapHeight());
 
         spriteBatch = new SpriteBatch();
         camera = new OrthographicCamera();
         camera.setToOrtho(true, 137, 204);
 
-        fontReg = AssetLoader.getFontRegular();
-        fontShadow = AssetLoader.getFontShadow();
+        playButton = new Button("Play", fontShadow, new ScreenSwitchHandler(Screen.INTRO, null));
+
+
     }
 
     @Override
@@ -40,13 +45,18 @@ public class MainMenuScreen implements com.badlogic.gdx.Screen {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         spriteBatch.begin();
-        fontReg.draw(spriteBatch, "Hello", 100, 100);
+        fontReg.draw(spriteBatch, "main screen", 100, 100);
+        playButton.draw(spriteBatch, camera);
         spriteBatch.end();
+
     }
 
     @Override
     public void resize(int width, int height) {
-
+        int centerX = width / 2;
+        int centerY = height / 2;
+        playButton.setX(centerX - playButton.getWidth() / 2);
+        playButton.setY(centerY + lineHeight);
     }
 
     @Override

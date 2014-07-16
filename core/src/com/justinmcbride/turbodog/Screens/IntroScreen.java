@@ -37,7 +37,7 @@ public class IntroScreen implements com.badlogic.gdx.Screen {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         spriteBatch.begin();
-        fontReg.draw(spriteBatch, "intro screen", gameHeight / 2, gameWidth / 2);
+        fontReg.draw(spriteBatch, "intro screen", 100, 100);
         spriteBatch.end();
     }
 
