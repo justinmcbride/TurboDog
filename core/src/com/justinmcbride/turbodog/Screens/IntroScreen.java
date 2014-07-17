@@ -51,7 +51,6 @@ public class IntroScreen implements com.badlogic.gdx.Screen {
 
     @Override
     public void hide() {
-        ScreenManager.getInstance().dispose(Screen.INTRO);
         System.out.println("hiding intro");
     }
 
