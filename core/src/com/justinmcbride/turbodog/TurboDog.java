@@ -13,6 +13,7 @@ public class TurboDog extends Game {
         AssetLoader.initialLoad();
         ScreenManager.getInstance().initialize(this);
         ScreenManager.getInstance().show(Screen.INTRO);
+        // test commit
 	}
 
     @Override
