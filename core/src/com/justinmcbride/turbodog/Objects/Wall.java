@@ -1,16 +1,17 @@
 package com.justinmcbride.turbodog.Objects;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.GridPoint2;
-import com.badlogic.gdx.math.Matrix3;
-import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
+import com.justinmcbride.turbodog.Helpers.AssetLoader;
+import com.justinmcbride.turbodog.Helpers.Renderable;
 
 /**
  * Created by Justin on 7/17/2014.
  */
-public class Wall {
+public class Wall implements Renderable {
     private static final float LINE_WIDTH = 4;
 
     private GridPoint2 start, end, origin;
@@ -22,7 +23,10 @@ public class Wall {
     private int growSpeed;
     private boolean fullyGrown = false;
 
+    private TextureRegion texture;
+
     public Wall(Rectangle field, GridPoint2 origin, GrowDirection direction, int growSpeed) {
+        texture = AssetLoader.getWall();
         this.start = this.end = this.origin = new GridPoint2(origin);
         this.growDirection = direction;
         this.growSpeed = growSpeed;
@@ -88,8 +92,9 @@ public class Wall {
         if (!fullyGrown) grow(delta);
     }
 
-    public void draw(SpriteBatch spriteBatch, Rectangle field) {
-
+    @Override
+    public void onRender(SpriteBatch spriteBatch, float delta) {
+        spriteBatch.draw(texture, start.x, start.y, size.x, size.y);
     }
 
     public static enum GrowDirection {

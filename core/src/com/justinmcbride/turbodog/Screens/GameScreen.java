@@ -10,19 +10,23 @@ import com.justinmcbride.turbodog.GameWorld.GameWorld;
  * Created by Justin on 7/12/2014.
  */
 public class GameScreen implements Screen {
+    private float gameWidth, gameHeight;
 
     private GameWorld world;
     private GameRenderer renderer;
 
     public GameScreen() {
-        world = new GameWorld();
-        renderer = new GameRenderer(world);
+        float screenWidth = Gdx.graphics.getWidth();
+        float screenHeight = Gdx.graphics.getHeight();
+        gameWidth = 136;
+        gameHeight = screenHeight / (screenWidth / gameWidth);
+
+        world = new GameWorld(gameWidth, gameHeight);
+        renderer = new GameRenderer(world, gameWidth, gameHeight);
     }
 
     @Override
     public void render(float delta) {
-        Gdx.gl.glClearColor(10/255.0f, 15/255.0f, 230/255.0f, 1f);
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         world.update(delta);
         renderer.render(delta);
     }

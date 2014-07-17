@@ -1,11 +1,17 @@
 package com.justinmcbride.turbodog.Helpers;
 
 import com.badlogic.gdx.InputProcessor;
+import com.justinmcbride.turbodog.GameWorld.GameWorld;
 
 /**
  * Created by Justin on 7/15/2014.
  */
 public class InputHandler implements InputProcessor {
+    private GameWorld gameWorld;
+
+    public InputHandler(GameWorld gameWorld) {
+        this.gameWorld = gameWorld;
+    }
     @Override
     public boolean keyDown(int keycode) {
         return false;
