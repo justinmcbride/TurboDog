@@ -38,7 +38,7 @@ public class GameRenderer {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         spriteBatch.begin();
-        fontReg.draw(spriteBatch, Float.toString(1 / delta), 30, 30);
+        //fontReg.draw(spriteBatch, Float.toString(1 / delta), 30, 30);
         spriteBatch.end();
     }
 
