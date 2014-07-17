@@ -16,7 +16,7 @@ import java.util.ListIterator;
 /**
  * Created by Logan on 7/15/2014.
  */
-public class GameWorld implements InputProcessor {
+public class GameWorld {
 
     List<Ball> balls;
     List<Wall> walls;
@@ -39,55 +39,10 @@ public class GameWorld implements InputProcessor {
         }
     }
 
-    private void createWall(int x, int y) {
+    public void createWall(int x, int y) {
         System.out.println("In createWall() of gameWorld");
         Wall wall = new Wall(field, new GridPoint2(x, y), Wall.GrowDirection.HORIZONTAL, 5);
         walls.add(wall);
         renderList.add(wall);
-    }
-
-    //
-    // Input methods
-    //
-
-    @Override
-    public boolean keyDown(int keycode) {
-        return false;
-    }
-
-    @Override
-    public boolean keyUp(int keycode) {
-        return false;
-    }
-
-    @Override
-    public boolean keyTyped(char character) {
-        return false;
-    }
-
-    @Override
-    public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-        createWall(screenX, screenY);
-        return true;
-    }
-
-    @Override
-    public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-        return false;
-    }
-
-    @Override
-    public boolean touchDragged(int screenX, int screenY, int pointer) {
-        return false;
-    }
-
-    @Override
-    public boolean mouseMoved(int screenX, int screenY) {
-        return false;
-    }
-
-    @Override
-    public boolean scrolled(int amount) {
-        return false;
     }
 }

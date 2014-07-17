@@ -12,9 +12,9 @@ import com.justinmcbride.turbodog.Helpers.Renderable;
  * Created by Justin on 7/17/2014.
  */
 public class Wall implements Renderable {
-    private static final float LINE_WIDTH = 4;
+    private static final float LINE_WIDTH = 20;
 
-    private GridPoint2 start, end, origin;
+    private GridPoint2 start, end;
     private Vector2 size;
 
     private Rectangle field;
@@ -27,10 +27,11 @@ public class Wall implements Renderable {
 
     public Wall(Rectangle field, GridPoint2 origin, GrowDirection direction, int growSpeed) {
         texture = AssetLoader.getWall();
-        this.start = this.end = this.origin = new GridPoint2(origin);
+        this.start = new GridPoint2(origin);
+        this.end = new GridPoint2(origin);
+
         this.growDirection = direction;
         this.growSpeed = growSpeed;
-        this.end = new GridPoint2(start);
 
         if (growDirection == GrowDirection.HORIZONTAL) this.size = new Vector2(0, LINE_WIDTH);
         else this.size = new Vector2(LINE_WIDTH, 0);

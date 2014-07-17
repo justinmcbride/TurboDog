@@ -16,6 +16,8 @@ public class GameRenderer {
     private GameWorld zeeWorld;
 
     private SpriteBatch spriteBatch;
+
+
     private OrthographicCamera camera;
 
     private BitmapFont fontReg;
@@ -44,6 +46,11 @@ public class GameRenderer {
         for (Renderable item : zeeWorld.renderList) item.onRender(spriteBatch, delta);
         //fontReg.draw(spriteBatch, Float.toString(1 / delta), 30, 30);
         spriteBatch.end();
+    }
+
+
+    public OrthographicCamera getCamera() {
+        return camera;
     }
 
     public void dispose() {
