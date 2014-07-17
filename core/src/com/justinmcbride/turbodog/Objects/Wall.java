@@ -1,7 +1,10 @@
 package com.justinmcbride.turbodog.Objects;
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.GridPoint2;
 import com.badlogic.gdx.math.Matrix3;
 import com.badlogic.gdx.math.Matrix4;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
 /**
@@ -10,23 +13,40 @@ import com.badlogic.gdx.math.Vector2;
 public class Wall {
     private static final float LINE_WIDTH = 4;
 
-    private Vector2 start, end;
-    private Vector2 size;
+    private GridPoint2 start, end, origin;
+    private GridPoint2 size;
 
-    public Wall(Vector2 start, Vector2 end) {
-        this.start = start;
-        this.end = end;
-        if (start.x == end.x) {
-            // If the line is vertical
-            size.x = LINE_WIDTH;
-            size.y = end.y - start.y;
-            if (size.y < 0) size.y *= -1; // in case the line is backwards
-        }
-        else {
-            // the line is horizontal
-            size.x = end.x - start.x;
-            size.y = LINE_WIDTH;
-            if (size.y < 0) size.y *= -1; // in case the line is backwards
+    private GrowDirection growDirection;
+    private int growSpeed;
+    private boolean fullyGrown = false;
+
+    public Wall(GridPoint2 start, GridPoint2 end, GrowDirection direction, int growSpeed) {
+        this.start = this.origin = new GridPoint2(start);
+        this.growDirection = direction;
+        this.growSpeed = growSpeed;
+        this.end = new GridPoint2(start);
+    }
+
+    private void grow(float delta) {
+        if (growDirection == GrowDirection.HORIZONTAL) {
+            start.x -= (start.x * delta);
+            end.x += (end.x * delta);
+        } else {
+
         }
     }
+
+    public void update(float delta) {
+        if (this.fullyGrown) return;
+        else this.grow(delta);
+    }
+
+    public void draw(SpriteBatch spriteBatch, Rectangle field) {
+
+    }
+
+    public static enum GrowDirection {
+        HORIZONTAL,
+        VERTICAL
+    };
 }
