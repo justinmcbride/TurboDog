@@ -15,8 +15,6 @@ public class GameScreen implements Screen {
     private GameRenderer renderer;
 
     public GameScreen() {
-        System.out.println("GameScreen Initialized");
-
         world = new GameWorld();
         renderer = new GameRenderer(world);
     }
@@ -26,8 +24,7 @@ public class GameScreen implements Screen {
         Gdx.gl.glClearColor(10/255.0f, 15/255.0f, 230/255.0f, 1f);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         world.update(delta);
-        renderer.render();
-        System.out.println(1 / delta);
+        renderer.render(delta);
     }
 
     @Override
