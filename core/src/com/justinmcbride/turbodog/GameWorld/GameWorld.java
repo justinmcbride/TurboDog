@@ -57,6 +57,7 @@ public class GameWorld implements InputProcessor {
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
         createWall(screenX, screenY);
+        return true;
     }
 
     @Override
