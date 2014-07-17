@@ -36,23 +36,56 @@ public class Wall {
 
     private void grow(float delta) {
         if (growDirection == GrowDirection.HORIZONTAL) {
+            // grow the wall in both directions
             start.x -= (growSpeed * delta);
             end.x += (growSpeed * delta);
 
+            // check to see that we haven't hit the sides of the field
+            if (start.x < (int)field.x)  {
+                // the start of the wall is at the left boundary
+                start.x = (int)field.x;
+            }
+            if (end.x > ((int)field.x + (int)field.width)) {
+                // the end of the wall is at the right boundary
+                end.x = (int)field.x + (int)field.width;
+            }
+
+            // check to see if the wall has grown the full length
+            if (start.x == (int)field.x && end.x == ((int)field.x + (int)field.width)) {
+                fullyGrown = true;
+            }
+
+            // update the size
             size.x = end.x - start.x;
 
         } else {
+            // grow the wall in both directions
             start.y -= (growSpeed * delta);
             end.y += (growSpeed * delta);
 
+            // check to see that we haven't hit the sides of the field
+            if (start.y < (int)field.y)  {
+                // the start of the wall is at the left boundary
+                start.y = (int)field.y;
+            }
+            if (end.y > ((int)field.y + (int)field.height)) {
+                // the end of the wall is at the right boundary
+                end.y = (int)field.y + (int)field.height;
+            }
+
+            // check to see if the wall has grown the full length
+            if (start.y == (int)field.y && end.y == ((int)field.y + (int)field.height)) {
+                fullyGrown = true;
+            }
+
+            // update the size
             size.y = start.y - end.y;
         }
 
     }
 
     public void update(float delta) {
-        if (this.fullyGrown) return;
-        else this.grow(delta);
+        if (!fullyGrown) grow(delta);
     }
 
     public void draw(SpriteBatch spriteBatch, Rectangle field) {
