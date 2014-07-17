@@ -1,5 +1,6 @@
 package com.justinmcbride.turbodog.GameWorld;
 
+import com.badlogic.gdx.math.Rectangle;
 import com.justinmcbride.turbodog.Objects.Ball;
 
 import java.util.List;
@@ -10,7 +11,11 @@ import java.util.List;
 public class GameWorld {
 
     List<Ball> balls;
+    Rectangle field;
 
+    public GameWorld() {
+        field = new Rectangle();
+    }
 
     public void update(float delta) {
         // Update Shit here
